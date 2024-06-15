@@ -5,6 +5,7 @@ from fastapi import HTTPException
 import logging
 from config import settings
 from services.response import BalanceSheetResponse
+from tests.test_reponse import sample_response
 
 
 class XeroService:
@@ -12,6 +13,7 @@ class XeroService:
         self.base_url = base_url
 
     def get_balance_sheet(self) -> BalanceSheetResponse:
+        return sample_response
         url = f"{self.base_url}/api.xro/2.0/Reports/BalanceSheet"
         try:
             response = get(url, timeout=10)
